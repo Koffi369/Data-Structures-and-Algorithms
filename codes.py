@@ -55,6 +55,17 @@ class Linked_list:
             temp = iter_node.next_node_reference
             iter_node.next_node_reference = new_node
             new_node.next_node_reference = temp
+            
+    
+    def traverse_list(self):
+        if self.head == None:
+            return "Nothing in the list"
+        else:
+            iter_node = self.head
+            # while iter_node.next_node_reference != None:
+            while iter_node != None:
+                print(iter_node.value)
+                iter_node = iter_node.next_node_reference
                 
         
 
@@ -74,7 +85,10 @@ llist.tail = Node2
 
 """
 
-# Video 7
+
+
+"""
+# Video 8 
 
 llist = Linked_list()         
 llist.insert_node(1,-1)
@@ -86,11 +100,22 @@ llist.insert_node('elmt_begin',0)
 llist.insert_node('elmt_midle',3)       
 print([node.value for node in llist])    
 
+"""
 
 
+# Video 9
 
-
-
+llist = Linked_list()         
+llist.insert_node(1,-1)
+llist.insert_node(2,-1)
+llist.insert_node(3,-1)
+#insert an element at the beginning   
+llist.insert_node('elmt_begin',0)    
+#insert an element in the midle   
+llist.insert_node('elmt_midle',3)  
+llist.insert_node(4,-1)
+print([node.value for node in llist])
+llist.traverse_list()
 
 
 
