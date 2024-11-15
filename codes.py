@@ -66,6 +66,23 @@ class Linked_list:
             while iter_node != None:
                 print(iter_node.value)
                 iter_node = iter_node.next_node_reference
+        
+    def search_element(self, elmt):
+        if self.head == None:
+            return "Nothing in the list"
+        else:
+            iter_node = self.head
+            idx = 0
+            while iter_node != None:
+                if iter_node.value == elmt:
+                    return f"{elmt} found at positiion {idx}"
+                    break
+                else:
+                    iter_node = iter_node.next_node_reference
+                    idx += 1
+            if iter_node == None and idx != 0:
+                print("elemnt not found")
+            
                 
         
 
@@ -103,7 +120,22 @@ print([node.value for node in llist])
 """
 
 
-# Video 9
+# # Video 9
+
+# llist = Linked_list()         
+# llist.insert_node(1,-1)
+# llist.insert_node(2,-1)
+# llist.insert_node(3,-1)
+# #insert an element at the beginning   
+# llist.insert_node('elmt_begin',0)    
+# #insert an element in the midle   
+# llist.insert_node('elmt_midle',3)  
+# llist.insert_node(4,-1)
+# print([node.value for node in llist])
+# llist.traverse_list()
+
+
+# Video 10
 
 llist = Linked_list()         
 llist.insert_node(1,-1)
@@ -115,7 +147,7 @@ llist.insert_node('elmt_begin',0)
 llist.insert_node('elmt_midle',3)  
 llist.insert_node(4,-1)
 print([node.value for node in llist])
-llist.traverse_list()
+llist.search_element(3)
 
 
 
