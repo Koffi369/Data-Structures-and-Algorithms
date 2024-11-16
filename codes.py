@@ -82,42 +82,91 @@ class Linked_list:
                     idx += 1
             if iter_node == None and idx != 0:
                 print("elemnt not found")
-            
                 
-        
+    def delete_node(self, location):
+        #Assume location starts from 0
+        if self.head == None:
+            return "Nothing in the list"
+        elif location == 0:
+            first_node = self.head.next_node_reference
+            print(self.head.value)
+            print(first_node.value)
+            
+            if first_node.next_node_reference == None: #only one node
+                self.head.next_node_reference = None
+                self.tail.next_node_reference = None
+                
+            else:
+                self.head = first_node
+                
+                   
+        elif location == -1:
+            first_node = self.head.next_node_reference
 
-"""
-# Video 6
-llist = Linked_list()
+            
+            if first_node.next_node_reference == None: #only one node
+                self.head.next_node_reference = None
+                self.tail.next_node_reference = None
+            else:
+                iter_node = self.head
+                iter_node_pred = self.head
 
-Node1 = Node()
-Node2 = Node()
+                while iter_node.next_node_reference != None:
+                    iter_node_pred = iter_node
+                    iter_node = iter_node.next_node_reference
+                    
+                iter_node_pred.next_node_reference = None
+                self.tail.next_node_reference = iter_node_pred
+                   
+        else:
+            iter_node = self.head
+            iter_node_pred = self.head
+            idx = 0
+            while idx != location:
+                iter_node_pred = iter_node
+                iter_node = iter_node.next_node_reference
+                idx += 1
+                
+            iter_node_succ = iter_node.next_node_reference
+            
+            iter_node_pred.next_node_reference = iter_node_succ
+            
+    def delete_all(self):
+        self.head = None
+        self.tail = None
+            
+    
 
 
-llist.head = Node1 
+# # Video 6
+# llist = Linked_list()
 
-llist.head.next_node_reference = Node2
-
-llist.tail = Node2
-
-"""
+# Node1 = Node()
+# Node2 = Node()
 
 
+# llist.head = Node1 
 
-"""
+# llist.head.next_node_reference = Node2
+
+# llist.tail = Node2
+
+
+
+
 # Video 8 
 
-llist = Linked_list()         
-llist.insert_node(1,-1)
-llist.insert_node(2,-1)
-llist.insert_node(3,-1)
-#insert an element at the beginning   
-llist.insert_node('elmt_begin',0)    
-#insert an element in the midle   
-llist.insert_node('elmt_midle',3)       
-print([node.value for node in llist])    
+# llist = Linked_list()         
+# llist.insert_node(1,-1)
+# llist.insert_node(2,-1)
+# llist.insert_node(3,-1)
+# #insert an element at the beginning   
+# llist.insert_node('elmt_begin',0)    
+# #insert an element in the midle   
+# llist.insert_node('elmt_midle',3)       
+# print([node.value for node in llist])    
 
-"""
+
 
 
 # # Video 9
@@ -137,25 +186,36 @@ print([node.value for node in llist])
 
 # Video 10
 
+# llist = Linked_list()         
+# llist.insert_node(1,-1)
+# llist.insert_node(2,-1)
+# llist.insert_node(3,-1)
+# #insert an element at the beginning   
+# llist.insert_node('elmt_begin',0)    
+# #insert an element in the midle   
+# llist.insert_node('elmt_midle',3)  
+# llist.insert_node(4,-1)
+# print([node.value for node in llist])
+# llist.search_element(3)
+
+
+
+
+# Video 11
+
 llist = Linked_list()         
 llist.insert_node(1,-1)
 llist.insert_node(2,-1)
 llist.insert_node(3,-1)
-#insert an element at the beginning   
-llist.insert_node('elmt_begin',0)    
-#insert an element in the midle   
-llist.insert_node('elmt_midle',3)  
 llist.insert_node(4,-1)
+#insert an element at the beginning   
+llist.insert_node(0,0)    
+# #insert an element in the midle   
+# llist.insert_node('elmt_midle',3)  
+llist.insert_node(0,4)
 print([node.value for node in llist])
-llist.search_element(3)
-
-
-
-
-
-
-
-
+llist.delete_node(3)
+print([node.value for node in llist])
 
 
 
