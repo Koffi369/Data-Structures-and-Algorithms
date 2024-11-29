@@ -1,68 +1,33 @@
 
-# # https://www.geeksforgeeks.org/insertion-sort-algorithm/
-# def insertion_sort(Array):
-#     for i in range(1,len(Array)):
-#         j = i - 1
-#         while Array[j]>Array[j+1] and j>=0 :
-#             temp = Array[j]
-#             Array[j] = Array[j+1]
-#             Array[j+1] = temp
-#             j -=1
-#     return Array
+# https://www.geeksforgeeks.org/insertion-sort-algorithm/
+def insertion_sort(Array):
+    for i in range(1,len(Array)):
+        j = i - 1
+        while Array[j]>Array[j+1] and j>=0 :
+            temp = Array[j]
+            Array[j] = Array[j+1]
+            Array[j+1] = temp
+            j -=1
+    return Array
 
 
 
 
-# Arr = [23, 1, 10, 5, 2]
+Arr = [23, 1, 10, 5, 2]
 
 
-# insertion_sort(Arr)
-
-
-#######################  Circular Singly Linked List  ##########################
-
-
-
-class Node:
-    def __init__(self,Node_value = None):
-        self.value = Node_value
-        self.next_node_reference = None
-        
-
-
-class Circular_Singly_LinledList:
-    def __init__(self):
-        self.head = None
-        self.tail = None
-        
-        
-    def __iter__(self):
-        iter_node = self.head
-        while iter_node:
-            yield iter_node
-            if iter_node == self.head:
-                break 
-            iter_node = iter_node.next_node_reference
-            
-            
-    def create_CircSLL(self, Node_value = None):
-        node  = Node(Node_value)
-        node.next_node_reference = node
-        self.head = node        
-        self.tail = node
+insertion_sort(Arr)
 
 
 
 
 
 
-# Video1
-
-Circ_LL = Circular_Singly_LinledList() 
-Circ_LL.create_CircSLL(5)
 
 
-print([ node.value for node in Circ_LL])
+
+
+
 
 
 
