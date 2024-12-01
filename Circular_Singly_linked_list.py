@@ -40,9 +40,13 @@ class Circular_Singly_LinledList:
         iter_node = self.head
         while iter_node:
             yield iter_node
-            if iter_node == self.head:
-                break 
+            # if iter_node == self.head:
+            #     break 
             iter_node = iter_node.next_node_reference
+            
+            if iter_node == self.tail.next_node_reference:
+                break
+            
             
             
     def create_CircSLL(self, Node_value = None):
@@ -50,6 +54,38 @@ class Circular_Singly_LinledList:
         node.next_node_reference = node
         self.head = node        
         self.tail = node
+        
+    def insert_in_CircSLL(self,Node_value, location  ):
+        if self.head == None :
+            return "No elemt in the CircSLL"
+        
+        else:
+            if location == 0:
+                New_node  = Node(Node_value)
+                New_node.next_node_reference = self.head
+                self.head = New_node
+                self.tail.next_node_reference = New_node
+                
+            elif location == -1:
+                New_node  = Node(Node_value)
+                New_node.next_node_reference = self.tail.next_node_reference
+                self.tail.next_node_reference = New_node
+                self.tail = New_node
+                           
+            else:
+                New_node  = Node(Node_value)
+                idx = 0
+                iter_node = self.head
+                while idx < location -1:
+                    iter_node = iter_node.next_node_reference
+                    idx +=1
+                New_node.next_node_reference = iter_node.next_node_reference
+                iter_node.next_node_reference = New_node
+               
+                   
+                    
+                
+            
 
 
 
@@ -58,10 +94,23 @@ class Circular_Singly_LinledList:
 
 # Video1
 
+# Circ_LL = Circular_Singly_LinledList() 
+# Circ_LL.create_CircSLL(5)
+
+
+# print([ node.value for node in Circ_LL])
+
+
+
+# Video4
+
 Circ_LL = Circular_Singly_LinledList() 
 Circ_LL.create_CircSLL(5)
 
-
+Circ_LL.insert_in_CircSLL(3,0)
+Circ_LL.insert_in_CircSLL(7,-1)
+Circ_LL.insert_in_CircSLL("midle1",1)
+Circ_LL.insert_in_CircSLL("midle3",3)
 print([ node.value for node in Circ_LL])
 
 
