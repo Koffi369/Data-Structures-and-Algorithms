@@ -114,61 +114,110 @@ def Bucket_Sort(List, order = "Ascending"):
 # lalist    
 
 
-def merge_two_sorted_array(Arr1, Arr2):
-    # l1 = len(Arr1)
-    # l2 = len(Arr2)
-    # merged_arr = []
-    # idx1 = 0
-    # idx2 = 0  
-    
-    # if l1 < l2:  
-    #     while idx1 < l1:
-    #         if Arr1[idx1] < Arr2[idx2]:
-    #             merged_arr.append(Arr1[idx1])
-    #             idx1 += 1
-    #         else:
-    #             merged_arr.append(Arr2[idx2])
-    #             idx2 += 1   
-    #     merged_arr = merged_arr + Arr2[idx2:]
-    # else:
-    #     while idx2 < l2:
-    #         print(idx2,idx1,l2 )
-    #         print(Arr1[idx1])
-    #         print(Arr2[idx2])
-    #         print("KKKKKKKKKKKKKKKKKKKKk")
-    #         if Arr1[idx1] < Arr2[idx2]:
-    #             merged_arr.append(Arr1[idx1])
-    #             idx1 += 1
-    #         else:
-    #             merged_arr.append(Arr2[idx2])
-    #             idx2 += 1
-    #     merged_arr = merged_arr + Arr1[idx2:]
-    # return merged_arr
+# https://www.youtube.com/watch?v=cVZMah9kEjI
 
-
-def Merge_Sort(List, order = "Ascending"):
+def Merge_Sort(Arr, order = "Ascending"):
     if order == "Ascending":
-    #     if len(List) <2:
-    #         return List
-
-    #     List1 = List[0 : int(len(List)/2)-1]
-    #     List2 = List[int(len(List)/2)-1:]
         
-    #     List1 = Merge_Sort(List1)
-    #     List2 = Merge_Sort(List2)
+        if len(Arr)<=1:
+            return Arr
+        
+        left_Arr = Arr[:len(Arr)//2]
+        right_Arr = Arr[len(Arr)//2:]
+        
+        left_Arr = Merge_Sort(left_Arr)
+        right_Arr = Merge_Sort(right_Arr)
+        
+        # while len(Arr)>1:
+        #     left_Arr = Merge_Sort(left_Arr)
+        #     right_Arr = Merge_Sort(right_Arr)
             
-    # return merge_two_sorted_array(List1, List2)
+        
+        idx_left_Arr = 0
+        idx_right_Arr = 0
+        idx_Arr = 0
+        
+        while idx_left_Arr < len(left_Arr) and idx_right_Arr  < len(right_Arr):
+            if left_Arr[idx_left_Arr] < right_Arr[idx_right_Arr]:
+                Arr[idx_Arr] = left_Arr[idx_left_Arr]
+                idx_left_Arr +=1
+            else:
+                Arr[idx_Arr] = right_Arr[idx_right_Arr]
+                idx_right_Arr +=1
+            idx_Arr +=1
+            
+            
+        
+        while idx_left_Arr < len(left_Arr):
+             Arr[idx_Arr] = left_Arr[idx_left_Arr]
+             idx_left_Arr +=1
+             idx_Arr +=1
+             
+        while idx_right_Arr  < len(right_Arr): 
+            Arr[idx_Arr] = right_Arr[idx_right_Arr]
+            idx_right_Arr +=1
+            idx_Arr +=1
+        
+        return Arr
+        
+        
+
         
         
         
                 
 
             
-lalist = Merge_Sort([2,1,7,6,5,3,4,9,8,10])
+# lalist = Merge_Sort([2,1,7,6,5,3,4,9,8,10])
 
-lalist             
+# lalist             
+        
+
+
+# https://www.youtube.com/watch?v=kFeXwkgnQ9U    
+
+def Quick_Sort(Arr, order = "Ascending"):
+    if order == "Ascending": 
+        if len(Arr)<=1:
+            return Arr
+        pivot_id = len(Arr) -1
+        j = len(Arr) -2
+        i = 0
+        
+        while i < pivot_id and j > 0:
+            if Arr[i] > Arr[pivot_id] and Arr[j] < Arr[pivot_id]:
+                Arr[j] , Arr[i] = Arr[i], Arr[j]
+                i +=1
+                j-=1
+            else:
+                if Arr[i] > Arr[pivot_id]:
+                    pass
+                else:
+                    i+=1
+                    
+                if Arr[j] < Arr[pivot_id]:
+                    pass
+                else:
+                    j-=1
+
+            if i<=j:
+                Arr[pivot_id] , Arr[i]= Arr[i], Arr[pivot_id]
+                Arr[:i] = Quick_Sort( Arr[:i])
+                Arr[i+1:] = Quick_Sort( Arr[i+1:])    
+    
+    return Arr
+        
+    
         
         
+    
+    
+lalist = Quick_Sort([2,1,7,6,5,3,4,9,8,10])
+
+print(lalist    )
+    
+    
+ 
         
     
     
