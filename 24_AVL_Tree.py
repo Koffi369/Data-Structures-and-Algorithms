@@ -23,34 +23,34 @@ print(My_AVL)
 
 ###### Traversal of AVL Tree
 
-def preorder_traversal(BST):
-    if BST == None:
+def preorder_traversal(AVL):
+    if AVL == None:
         print("the tre is empty")
         return 
     else:
-        print(BST.data)
-        preorder_traversal(BST.left_child)
-        preorder_traversal(BST.right_child)  
+        print(AVL.data)
+        preorder_traversal(AVL.left_child)
+        preorder_traversal(AVL.right_child)  
         
         
-def inorder_traversal(BST):
-    if BST == None:
+def inorder_traversal(AVL):
+    if AVL == None:
         print("the tre is empty")
         return 
     else:       
-        inorder_traversal(BST.left_child)
-        print(BST.data)
-        inorder_traversal(BST.right_child) 
+        inorder_traversal(AVL.left_child)
+        print(AVL.data)
+        inorder_traversal(AVL.right_child) 
         
         
-def postorder_traversal(BST):
-    if BST == None:
+def postorder_traversal(AVL):
+    if AVL == None:
         print("the tre is empty")
         return 
     else:       
-        postorder_traversal(BST.left_child)
-        postorder_traversal(BST.right_child)   
-        print(BST.data)
+        postorder_traversal(AVL.left_child)
+        postorder_traversal(AVL.right_child)   
+        print(AVL.data)
         
         
       
@@ -114,13 +114,13 @@ class queue:
         
 
 
-def levelorder_traversal(BST):
-    if BST == None:
+def levelorder_traversal(AVL):
+    if AVL == None:
         print("the tre is empty")
         return 
     else:
         thequeue = queue()
-        thequeue.enqueue(BST)
+        thequeue.enqueue(AVL)
         while thequeue.queue.head != None:
             dequeued = thequeue.queue.head
             print(dequeued.value.data)
@@ -132,17 +132,17 @@ def levelorder_traversal(BST):
             
         
     
-def search_a_node(BST, node_value_to_search):
-    if BST == None:
+def search_a_node(AVL, node_value_to_search):
+    if AVL == None:
         print("the tre is empty")
         return 
     else:
-        if BST.data == node_value_to_search:
+        if AVL.data == node_value_to_search:
             return "Found"
-        elif node_value_to_search < BST.data :
-            search_a_node(BST.left_child, node_value_to_search)
+        elif node_value_to_search < AVL.data :
+            search_a_node(AVL.left_child, node_value_to_search)
         else:
-            search_a_node(BST.right_child, node_value_to_search)
+            search_a_node(AVL.right_child, node_value_to_search)
         
     
         
@@ -150,20 +150,59 @@ def search_a_node(BST, node_value_to_search):
         
         
         
+def get_height(root_node):
+    if root_node == None:
+        return 0
+    return root_node.height
+
+
+def Left_Rotation(disbalanced_node):
+    New_root = disbalanced_node.right_child
+    disbalanced_node.right_child = disbalanced_node.right_child.left_child
+    New_root.left_child = disbalanced_node
+    
+    New_root.height = 1 + max(get_height(New_root.left_child), get_height(New_root.right_child))
+    disbalanced_node.height = 1 + max(get_height(disbalanced_node.left_child), get_height(disbalanced_node.right_child))
+    
+    return New_root
+    
+        
+        
+def Right_Rotation(disbalanced_node):
+    New_root = disbalanced_node.left_child
+    disbalanced_node.left_child = disbalanced_node.left_child.right_child
+    New_root.right_child = disbalanced_node
+    
+    New_root.height = 1 + max(get_height(New_root.left_child), get_height(New_root.right_child))
+    disbalanced_node.height = 1 + max(get_height(disbalanced_node.left_child), get_height(disbalanced_node.right_child))
+    
+    return New_root
+    
+        
+        
+def get_balance(root_node):
+    return     get_height(root_node.left_child)  - get_height(root_node.right_child) 
         
         
         
         
+def inserting_a_node(AVL, node_value):
+    if AVL == None:
+        AVL = AVL_tree_Node(node_value)
+        return AVL
+    else:
+        if node_value <= AVL.data:
+            inserting_a_node(AVL.left_child, node_value)
+        else:
+            inserting_a_node(AVL.right_child, node_value)
+            
+    balance = get_balance()
+            
+            
+    
+            
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
         
         
         
