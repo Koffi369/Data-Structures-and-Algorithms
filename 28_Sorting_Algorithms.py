@@ -107,7 +107,6 @@ def Bucket_Sort(List, order = "Ascending"):
             
     return res
 
-
             
 # lalist = Bucket_Sort([2,1,7,6,5,3,4,9,8])
 
@@ -160,67 +159,154 @@ def Merge_Sort(Arr, order = "Ascending"):
         
         return Arr
         
-        
-
-        
-        
-        
-                
-
             
 # lalist = Merge_Sort([2,1,7,6,5,3,4,9,8,10])
 
 # lalist             
-        
 
 
 # https://www.youtube.com/watch?v=kFeXwkgnQ9U    
+# https://www.youtube.com/watch?v=0SkOjNaO1XY&list=PLBZBJbE_rGRV8D7XZ08LK6z-4zPoWzu5H&index=11
+def Quick_Sort(Arr,l,r):
+    if l >= r:
+        return 
+    else:
+        p = partition(Arr,l,r)
+        Quick_Sort(Arr,l,p-1)
+        Quick_Sort(Arr,p+1,r)
+    
+        
+        
+def partition(Arr,l,r):
+    i = l-1
+    for j in range(l,r):
+        if Arr[j] < Arr[r]:
+            i +=1
+            Arr[j] , Arr[i] =  Arr[i] , Arr[j] 
+    Arr[r] , Arr[i+1 ] = Arr[i+1 ], Arr[r]
+    
+    return i+1
 
-def Quick_Sort(Arr, order = "Ascending"):
-    if order == "Ascending": 
-        if len(Arr)<=1:
-            return Arr
-        pivot_id = len(Arr) -1
-        j = len(Arr) -2
-        i = 0
-        
-        while i < pivot_id and j > 0:
-            if Arr[i] > Arr[pivot_id] and Arr[j] < Arr[pivot_id]:
-                Arr[j] , Arr[i] = Arr[i], Arr[j]
-                i +=1
-                j-=1
-            else:
-                if Arr[i] > Arr[pivot_id]:
-                    pass
-                else:
-                    i+=1
-                    
-                if Arr[j] < Arr[pivot_id]:
-                    pass
-                else:
-                    j-=1
 
-            if i<=j:
-                Arr[pivot_id] , Arr[i]= Arr[i], Arr[pivot_id]
-                Arr[:i] = Quick_Sort( Arr[:i])
-                Arr[i+1:] = Quick_Sort( Arr[i+1:])    
-    
-    return Arr
-        
-    
-        
-        
-    
-    
-lalist = Quick_Sort([2,1,7,6,5,3,4,9,8,10])
+# def quicksort(arr):
+#     qs(arr, 0, len(arr) - 1)
 
-print(lalist    )
+# def qs(arr, l, r):
+#     if l >= r:
+#         return
+#     p = partition(arr, l, r)
+
+#     qs(arr, l, p - 1)
+#     qs(arr, p + 1, r)
+
+# def partition(arr, l, r):
+#     pivot = arr[r]
+#     i = l - 1
+#     for j in range(l, r):
+#         if arr[j] < pivot:
+#             i += 1
+#             arr[i], arr[j] = arr[j], arr[i]
+#     arr[i + 1], arr[r] = arr[r], arr[i + 1]
+#     return i + 1
+        
+
+
+# A = [2,1,7,6,5,3,4,9,8,10]
+    
+# Quick_Sort(A,0,9)
+# print(A)
+
+
+
+class Heap:
+    def __init__(self, maxsize):
+        self.maxsize = maxsize
+        self.List = [None] * self.maxsize
+        self.last_used_idx = -1
+        
+    def __str__(self):
+        return " ".join(self.List)
+        
+    # For minimum heap
+    def heapify_insert(self , idx):
+        if idx %2 == 0:
+            parent_idx = int((idx  -2)/2)
+        else:
+            parent_idx = int((idx  -1)/2)
+        
+        # print(self.List[idx] )
+        # print(self.List[parent_idx])
+        # print(parent_idx)
+        if parent_idx >= 0:
+            if self.List[idx] > self.List[parent_idx] or parent_idx < 0:
+                return       
+            else: 
+                self.List[idx], self.List[parent_idx] = self.List[parent_idx], self.List[idx]
+                self.heapify_insert(parent_idx)
+            
+        
+
+        
+    def insert_elmt(self, value):
+        if self.last_used_idx+1  == self.maxsize:
+            print("The heap is full")
+            return
+        self.last_used_idx +=1
+        self.List[self.last_used_idx] = value
+        self.heapify_insert(self.last_used_idx)
+        
+  
+    def heapify_delete(self , idx):
+        left_child_idx = 2*idx + 1
+        right_child_idx = 2*idx + 2
+        
+        if  self.last_used_idx <= left_child_idx:
+            return
+        
+        # print(self.List[left_child_idx])
+        # print(self.List[right_child_idx])
+        if self.List[left_child_idx] < self.List[right_child_idx]:
+            self.List[idx] , self.List[left_child_idx] = self.List[left_child_idx], self.List[idx]
+            self.heapify_delete(left_child_idx)
+        else:
+            self.List[idx] , self.List[right_child_idx] = self.List[right_child_idx], self.List[idx]
+            self.heapify_delete(right_child_idx)
+
+        
+    def remove_min(self):
+        if self.List[0] == None:
+            print("The heap is empty")
+            return
+        
+        poped = self.List[0]
+        self.List[0] = self.List[self.last_used_idx] 
+        self.List[self.last_used_idx]  = None
+        self.last_used_idx -= 1
+        
+        self.heapify_delete(0)
+  
+        return poped
+        
+
+        
+def Heap_Sort(arr):
+    My_heap = Heap(len(arr))
+    for val in arr:
+        My_heap.insert_elmt(val)
+    for i in range(len(arr)):
+        poped = My_heap.remove_min()
+        arr[i] = poped
+    return arr
+        
     
     
+        
+    
+A = [2,1,7,6,5,3,4,9,8,10]  
  
-        
+aaa = Heap_Sort(A)       
     
-    
+aaa   
 
 
 

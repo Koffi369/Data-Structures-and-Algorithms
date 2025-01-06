@@ -1,0 +1,54 @@
+####################### Topological Sort #######################
+    
+# python pop() Remove the last element from list
+
+class Topological_Sort:
+    def __init__(self):
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
