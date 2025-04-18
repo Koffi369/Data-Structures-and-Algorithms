@@ -1,9 +1,25 @@
+// You can compile in the terminal with
+// g++ -std=c++17 code14.cpp -o code14
+// Execute it with ./code14
+
+
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
 #include <cstdlib>
 #include <iostream>
 #include <string>
 #include <vector>
 #include <numeric>
 #include <sstream>
+#include <algorithm> 
 using namespace std;
  
 int main() {
@@ -22,9 +38,10 @@ int main() {
     
     // You can create a vector of strings
     vector<string> strVec(10);
+    // vector<string> strVec;
     
     // C++ string can grow in size and is much safer
-    string str("I'm a string");
+    string str("I'm a string"); // or string str = "I'm a string";
     strVec[0] = str;
     
     // You can access characters with an index
@@ -56,7 +73,10 @@ int main() {
     str += " and your not";
     
     // Append part of a string
-    str.append(str, 34, 37);
+    string mystr = "koko";
+
+    // str.append(str, 34, 37);
+    str.append(mystr, 0, 3);
     strVec[5] = str;
     
     // Erase characters from a string from an index to another
@@ -67,25 +87,38 @@ int main() {
     for(auto y: strVec)
         cout << y << endl;
     
+    
     // find() returns index where pattern is found
     // or npos
-    if(str.find("string") != string::npos)
+    if(str.find("string") != string::npos){
         cout << "1st not " << str.find("string") << endl;
+        };
+
+    if(str.find("not foundable") == string::npos){
+        cout << "not foundable " << str.find("not foundable") << endl; 
+        };
     
     // substr(x, y) returns a substring starting at
     // index x with a length of y
     cout << "Substr " << str.substr(6,6) << endl;
+
+    
+
     
     // Reverse a string by passing the beginning and end
     // of a string
     reverse (str.begin(), str.end());
     cout << "Reverse " << str << endl;
+
+
     
     // Case conversion
     transform(str2.begin(), str2.end(), str2.begin(), ::toupper);
     cout << "Upper " << str2 << endl;
     transform(str2.begin(), str2.end(), str2.begin(), ::tolower);
     cout << "Lower " << str2 << endl;
+
+
     
     // You can get the ascii code for a char by saving
     // the char as an int or with (int)
@@ -93,11 +126,23 @@ int main() {
     // A - Z : 65 - 90
     char aChar = 'Z';
     int aInt = aChar;
+
+    int kint = 'k';
+
+    cout << "k Code " << kint << endl;
     cout << "A Code " << (int)'a' << endl;
+
+    cout << "---------------------" <<endl;
     
     // Convert int to string
     string strNum = to_string(1+2);
-    cout << "String " << strNum << endl;
+    cout << "int to String " << strNum << endl;
+
+
+    int number = stoi("3");
+    cout << "String to int " << number << endl;
+
+    cout << "---------------------" <<endl;
     
     // ----- PROBLEM : SECRET STRING -----
     // Receive an uppercase string and hide its meaning
