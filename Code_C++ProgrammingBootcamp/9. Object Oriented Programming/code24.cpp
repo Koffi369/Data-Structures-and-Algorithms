@@ -1,8 +1,22 @@
+// You can compile in the terminal with
+// g++ -std=c++17 code24.cpp -o code24
+// Execute it with ./code24
+
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+
+
 #include <cstdlib>
 #include <iostream>
 #include <string>
 #include <vector>
 using namespace std;
+
+
+
+
 
 class Animal{
     
@@ -27,7 +41,7 @@ public:
     // we can refer to all objects using this
     // The pointer operator is used to access an 
     // objects fields and methods
-    void SetName(string name){this->name = name;}
+    void SetName(string name){this->name = name;}   // it seems this-> is used when we want to modify the value
     double GetHeight(){return height;}
     void SetHeight(double height){this->height = height;}
     double GetWeight(){return weight;}
@@ -55,6 +69,10 @@ public:
     void ToString();
     
 };
+
+
+//////////////////////////// defining methods and others
+
  
 // Refer to class fields and methods with ::
 int Animal::numOfAnimals = 0;
@@ -65,7 +83,7 @@ void Animal::SetAll(string name, double height,
     this->name = name;
     this->weight = weight;
     this->height = height;
-    Animal::numOfAnimals++;
+    // Animal::numOfAnimals++;
 }
  
 // Define the constructor
@@ -95,6 +113,10 @@ void Animal::ToString(){
             " cms tall and " << this -> weight <<
             " kgs in weight\n";
 }
+
+
+
+//////////////////////////// main() function
  
 int main()
 {
@@ -118,6 +140,9 @@ int main()
     // show the total Animals created
     cout << "Number of Animals " << 
             Animal::GetNumOfAnimals() << endl;
+
+    cout << "Number of Animals (with  tom.GetNumOfAnimals) " << 
+            tom.GetNumOfAnimals() << endl;            
     
     return 0;
 }
