@@ -15,9 +15,6 @@
 using namespace std;
 
 
-
-
-
 class Animal{
     
     // Private variables are only available to methods 
