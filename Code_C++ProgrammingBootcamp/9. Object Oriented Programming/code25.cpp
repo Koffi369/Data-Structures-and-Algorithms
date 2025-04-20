@@ -1,3 +1,14 @@
+// You can compile in the terminal with
+// g++ -std=c++17 code25.cpp -o code25
+// Execute it with ./code25 
+
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+
+
+
 #include <cstdlib>
 #include <iostream>
 #include <string>
@@ -95,6 +106,9 @@ void Animal::ToString(){
             " cms tall and " << this -> weight <<
             " kgs in weight\n";
 }
+ 
+
+
  
 // Through inheritance a class inherits all fields and methods
 // defined by the super, or inherited from class
