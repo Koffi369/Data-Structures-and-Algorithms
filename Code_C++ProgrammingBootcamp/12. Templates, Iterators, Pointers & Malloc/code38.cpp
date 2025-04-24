@@ -1,3 +1,12 @@
+// You can compile in the terminal with
+// g++ -std=c++17 code38.cpp -o code38
+// Execute it with ./code38
+
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+
 #include <cstdlib>
 #include <iostream>
 #include <string>
@@ -20,6 +29,8 @@ public:
     virtual void MakePizza() = 0;
 };
  
+
+
 // The last templates that will be called
 class NYStyleCrust {
 public:
@@ -28,15 +39,19 @@ public:
   }
 };
  
-class DeepDishCrust {
-public:
-  string AddIngredient() {
-    return "Super Awesome Chicago Deep Dish Crust\n\n";
-  }
-};
+// class DeepDishCrust {
+// public:
+//   string AddIngredient() {
+//     return "Super Awesome Chicago Deep Dish Crust\n\n";
+//   }
+// };
  
 // End of last templates called
  
+
+
+
+
 // The middle templates called
 template <typename T>
 class LotsOfMeat: public T {
@@ -46,15 +61,22 @@ public:
   }
 };
  
-template <typename T>
-class Vegan: public T {
-public:
-  string AddIngredient() {
-    return "Vegan Cheese, Veggies, " + T::AddIngredient();
-  }
-};
+// template <typename T>
+// class Vegan: public T {
+// public:
+//   string AddIngredient() {
+//     return "Vegan Cheese, Veggies, " + T::AddIngredient();
+//   }
+// };
  
 // End of middle templates called
+
+
+
+
+
+
+
  
 // We inherit from Pizza as well as the initial next template
 template <typename T>
@@ -64,13 +86,17 @@ public:
           T::AddIngredient(); }
 };
  
-template <typename T>
-class VeganDeepDish: public T, public Pizza {
-public:
-  void MakePizza() { cout << "Vegan Deep Dish : " << 
-          T::AddIngredient(); }
-};
+// template <typename T>
+// class VeganDeepDish: public T, public Pizza {
+// public:
+//   void MakePizza() { cout << "Vegan Deep Dish : " << 
+//           T::AddIngredient(); }
+// };
  
+
+
+
+
 int main()
 {
     // unique_ptr is a smart pointer that disposes of
@@ -79,7 +105,7 @@ int main()
     
     // Generate Pizza types and place them at the end of the vector
     pizzaOrders.emplace_back(new MeatNYStyle<LotsOfMeat<NYStyleCrust>>());
-    pizzaOrders.emplace_back(new VeganDeepDish<Vegan<DeepDishCrust>>());
+    // pizzaOrders.emplace_back(new VeganDeepDish<Vegan<DeepDishCrust>>());
     
     // Call the pizzas and execute the directions 
     // for making them

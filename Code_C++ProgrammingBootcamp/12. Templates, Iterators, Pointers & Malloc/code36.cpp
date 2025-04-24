@@ -1,3 +1,13 @@
+// You can compile in the terminal with
+// g++ -std=c++17 code36.cpp -o code36
+// Execute it with ./code36
+
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+
+
 #include <cstdlib>
 #include <iostream>
 #include <string>
@@ -24,6 +34,8 @@ int main(){
     // because values aren't stored contigously, but
     // instead use multiple arrays
     cout << nums[0] << endl;
+
+    cout << "----- END DOUBLE ENDED QUEUE -----" << endl;
     
     // ----- END DOUBLE ENDED QUEUE -----
     
@@ -51,18 +63,29 @@ int main(){
     vector<int>::iterator itr2 = nums2.begin();
     
     // Advance 2 spaces
+    cout << "advance(itr2, 2)" << endl;
     advance(itr2, 2);
     cout << *itr2 << endl;
+
+    cout << "--------_________-------" << endl;
     
     // Next works like advance, but it returns an 
     // iterator
+
+    cout << "auto itr3 = next(itr2, 1);" << endl;
     auto itr3 = next(itr2, 1);
     cout << *itr3 << endl;
+
+    cout << "--------_________-------" << endl;
     
     // Previous moves a set number of indexes and
     // returns an iterator
+
+    cout << "auto itr4 = prev(itr2, 1);" << endl;
     auto itr4 = prev(itr2, 1);
     cout << *itr4 << endl;
+
+    cout << "--------_________-------" << endl;
     
     // You can also insert at a defined index
     vector<int> nums3 = {1,4,5,6};
@@ -72,6 +95,12 @@ int main(){
     copy(nums4.begin(), nums4.end(), 
             inserter(nums3, itr5));
     
-    for(int &i: nums3)
-        cout << i << endl;
+    // for(int &i: nums3)
+    //     cout << i << endl;
+
+    for(int i: nums3)
+        cout << i << endl;    
+
+
+    return 0;
 }

@@ -40,5 +40,5 @@ int main()
     return 0;
 }
 
-// COMPILE WITH g++ tut33.cpp Animal.cpp
+// COMPILE WITH g++ code34.cpp Animal.cpp
 // Execute ./a.out

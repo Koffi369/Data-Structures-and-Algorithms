@@ -1,3 +1,13 @@
+// You can compile in the terminal with
+// g++ -std=c++17 code35.cpp -o code35
+// Execute it with ./code35
+
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+
+
 #include <cstdlib>
 #include <iostream>
 #include <string>
@@ -41,6 +51,9 @@ T Max(T val, T val2){
  
 // ----- END OF TEMPLATE FUNCTIONS -----
  
+
+
+
 // ----- TEMPLATE CLASSES -----
  
 // Template classes are classes that can work with 
@@ -68,7 +81,12 @@ public:
 };
  
 // You have to initialize static class members
+// template<typename T, typename U> int Person<T, U>::numOfPeople =0;
 template<typename T, typename U> int Person<T, U>::numOfPeople;
+
+
+
+
 
 int main(){
     // ----- TEMPLATE FUNCTIONS -----
