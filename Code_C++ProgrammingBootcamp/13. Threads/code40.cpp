@@ -1,3 +1,13 @@
+// You can compile in the terminal with
+// g++ -std=c++17 code40.cpp -o code40
+// Execute it with ./code40
+
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+
+
 #include <cstdlib>
 #include <iostream>
 #include <string>
@@ -24,6 +34,13 @@ void FindPrimes(unsigned int start,
             } else if((y + 1) == x){
                 vect.push_back(x);
             }
+
+        // for(unsigned int y = 2; y < int(x/2 + 1); y++){
+        //     if((x % y) == 0){
+        //         break;
+        //     } else if((2*y + 1) == x){
+        //         vect.push_back(x);
+        //     }
         }
     }
 }
@@ -47,6 +64,11 @@ int main()
     cout << "Execution Time : " << 
             (endTime - startTime)/double(CLOCKS_PER_SEC) 
             << endl;
+
+    cout << "primeVect.length =" << primeVect.size() << endl;
+
+
+    cout << "primeVect[0] =" << primeVect[0] << endl;
     
     return 0;
 }

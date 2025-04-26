@@ -1,3 +1,14 @@
+// You can compile in the terminal with
+// g++ -std=c++17 code39.cpp -o code39
+// Execute it with ./code39
+
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+
+
+
 #include <cstdlib>
 #include <iostream>
 #include <string>
@@ -28,11 +39,17 @@ void ExecuteThread(int id){
     
     // Convert to current time zone
     tm myLocalTime = *localtime(&sleepTime);
+
+
+
     
     // Print full time information
     cout << "Thread " << id << 
             " Sleep Time : " <<
             ctime(&sleepTime) << endl;
+
+
+
     
     // Get separate pieces
     cout << "Month : " <<
@@ -53,6 +70,10 @@ void ExecuteThread(int id){
     nowTime = chrono::system_clock::now();
     sleepTime = 
             chrono::system_clock::to_time_t(nowTime);
+
+
+
+            
     cout << "Thread " << id << 
             " Awake Time : " <<
             ctime(&sleepTime) << endl;
