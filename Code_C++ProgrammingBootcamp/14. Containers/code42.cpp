@@ -27,6 +27,7 @@ bool isEven(const int& val){
     return (val % 2) == 0;
 }
  
+
 int main()
 {
     // ---------- SEQUENCE CONTAINERS ----------
@@ -42,6 +43,7 @@ int main()
     // Add to the end and front
     deq1.push_back(5);
     deq1.push_front(1);
+    deq1.push_front(0);
 
     cout << "-----------------------" << endl;
     for(int i : deq1)
@@ -50,6 +52,8 @@ int main()
 
     // Add values with assign
     deq1.assign({11,12});
+
+    // deq1 = {13,14};
 
     cout << "----------   deq1.assign({11,12})  -------------" << endl;
     for(int i : deq1)
@@ -79,7 +83,7 @@ int main()
     
     // Add multiple values
     int tempArr[5] = {6,7,8,9,10};
-    deq1.insert(deq1.end(), tempArr, tempArr+5);
+    deq1.insert(deq1.begin(), tempArr +1, tempArr+5);
 
 
 
@@ -90,7 +94,7 @@ int main()
 
     
     // Erase at an index 
-    deq1.erase(deq1.end());
+    deq1.erase(deq1.end() - 1);
 
 
     cout << "-----------    deq1.erase(deq1.end());  ------------" << endl;
@@ -101,11 +105,11 @@ int main()
 
     
     // Erase 1st 2 elements
-    deq1.erase(deq1.begin(), deq1.begin()+2);
+    deq1.erase(deq1.begin(), deq1.begin()+3);
 
 
 
-    cout << "-----------  deq1.erase(deq1.begin(), deq1.begin()+2);  ------------" << endl;
+    cout << "-----------  deq1.erase(deq1.begin(), deq1.begin()+3);  ------------" << endl;
     for(int i : deq1)
         cout << i << endl;
 
@@ -113,6 +117,7 @@ int main()
     
     // Pop first value
     deq1.pop_front();
+
 
     cout << "-----------  deq1.pop_front(); ------------" << endl;
     for(int i : deq1)

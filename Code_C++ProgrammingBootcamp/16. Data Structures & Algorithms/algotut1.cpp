@@ -132,6 +132,9 @@ int main(){
     }
 
     // 3D Mult array
+    
+    // string mArr3[num_layers][num_columns][num_rows]
+
     string mArr3[2][3][2] = {
         {
             // 0 Rows

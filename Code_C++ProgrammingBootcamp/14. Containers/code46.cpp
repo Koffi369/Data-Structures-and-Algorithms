@@ -1,3 +1,13 @@
+// You can compile in the terminal with
+// g++ -std=c++17 code46.cpp -o code46
+// Execute it with ./code46
+
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+
+
 #include <cstdlib>
 #include <iostream>
 #include <string>
@@ -26,7 +36,9 @@ int main(){
     
     // Find element by key
     auto match = map1.find(1);
-    cout << match->second << endl;
+    cout << "match->first:  " << match->first << endl;
+    cout << "match->second:    " << match->second << endl;
+
     
     // Get iterator to value
     auto bart = map1.lower_bound(1);
@@ -42,6 +54,9 @@ int main(){
         cout << "Key : " << it2->first << endl;
         cout << "Value : " << it2->second << endl;
     }
+
+
+    cout << "-----------------------" << endl;
     
     // ----- END OF MAP -----
     

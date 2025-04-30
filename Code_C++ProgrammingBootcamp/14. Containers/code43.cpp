@@ -1,3 +1,13 @@
+// You can compile in the terminal with
+// g++ -std=c++17 code43.cpp -o code43
+// Execute it with ./code43
+
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+
+
 #include <cstdlib>
 #include <iostream>
 #include <string>
@@ -53,7 +63,13 @@ int main()
     // Insert at an index
     it2 = list1.begin();
     list1.insert(it2, 8);
-    
+
+    cout << "-----------------------" << endl;
+
+    for(int i : list1)
+        cout << i << endl;
+    cout << "-----------------------" << endl;
+
     // Erase at an index
     list1.erase(list1.begin());
     
@@ -62,6 +78,12 @@ int main()
     list<int>::iterator it3 = list1.begin();
     advance(it3, 2);
     list1.erase(it2, it3);
+
+    cout << "-----------------------" << endl;
+
+    for(int i : list1)
+        cout << i << endl;
+    cout << "-----------------------" << endl;
     
     // Pop first value
     list1.pop_front();
@@ -92,11 +114,13 @@ int main()
     // Merge lists
     list1.merge(list2);
     
+    cout << "-----------------------" << endl;
+
     for(int i : list2)
         cout << i << endl;
     
     cout << endl;
-    
+    cout << "-----------------------" << endl;
     // Cycle through the list
     for(int i : list1)
         cout << i << endl;

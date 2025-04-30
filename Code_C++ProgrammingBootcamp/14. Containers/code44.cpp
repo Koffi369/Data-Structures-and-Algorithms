@@ -1,3 +1,12 @@
+// You can compile in the terminal with
+// g++ -std=c++17 code44.cpp -o code44
+// Execute it with ./code44
+
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+
 #include <cstdlib>
 #include <iostream>
 #include <string>
@@ -38,19 +47,43 @@ int main()
     fl1.pop_front();
     
     // Get 1st
-    cout << "Front : " << fl1.front();
+    cout << "Front : " << fl1.front()<<endl;
     
     // Get iterator for 1st element
     forward_list<int>::iterator it4 = fl1.begin();
     
     // Insert after 1st element
     it4 = fl1.insert_after(it4, 5);
+    // fl1.insert_after(it4, 5);
+
+
+
+    cout << "-----------------------" << endl;
+
+    for(int i : fl1)
+        cout << i << endl;
+    cout << "-----------------------" << endl;
     
     // Delete just entered 5
     it4 = fl1.erase_after(fl1.begin());
+    // it4 = fl1.erase_after(it4);
+    // fl1.erase_after(fl1.begin());
+
+
+    cout << "-----------------------" << endl;
+
+    for(int i : fl1)
+        cout << i << endl;
+    cout << "-----------------------" << endl;
     
     // Place in 1st position
     fl1.emplace_front(6);
+
+    cout << "-----------------------" << endl;
+
+    for(int i : fl1)
+        cout << i << endl;
+    cout << "-----------------------" << endl;
     
     // Remove a value
     fl1.remove(6);
